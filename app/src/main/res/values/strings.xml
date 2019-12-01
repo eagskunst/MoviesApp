@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">MovieApp</string>
+    <string name="try_again">An error has occurred, try again later.</string>
+    <string name="no_internet">Check your internet connection and try again.</string>
+    <string name="unknown_error">Oops, something wrong happened.</string>
+    <string name="undefined" translatable="false">Undefined</string>
+    <string name="connectivity_exception" translatable="false">No connectivity exception</string>
 </resources>
