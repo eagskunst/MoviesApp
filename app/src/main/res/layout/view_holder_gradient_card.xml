@@ -4,20 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <import type="com.eagskunst.libraries.movieapp.DummyModel"/>
+        <import type="com.eagskunst.libraries.movieapp.app.models.CategoryCard"/>
+        <import type="androidx.core.content.ContextCompat"/>
         <variable
             name="model"
-            type="DummyModel" />
+            type="CategoryCard" />
 
     </data>
 
     <com.google.android.material.card.MaterialCardView
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="180dp"
         app:cardCornerRadius="8dp"
-        app:contentPadding="15dp"
-        app:cardUseCompatPadding="true"
         app:cardElevation="5dp"
         android:layout_margin="12dp"
         app:cardGradient="@{model}">
@@ -25,18 +24,24 @@
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:elevation="6dp"
             >
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:alpha="0.3"
+                android:scaleType="centerCrop"
+                android:src="@{ContextCompat.getDrawable(context, model.img)}"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:gravity="start"
-                android:textSize="22sp"
-                android:maxLines="2"
-                tools:text="Xfdwds"
+                android:textSize="18sp"
+                android:padding="12dp"
                 android:text="@{model.title}"
+                android:textColor="@color/white"
                 android:textAllCaps="true" />
 
         </FrameLayout>
