@@ -5,6 +5,7 @@ import androidx.databinding.DataBindingUtil
 import com.eagskunst.libraries.movieapp.app.app_di.MovieAppComponent
 import com.eagskunst.libraries.movieapp.app.models.CategoryCard
 import com.eagskunst.libraries.movieapp.databinding.ActivityMainBinding
+import com.eagskunst.libraries.movieapp.utils.Constants
 import com.eagskunst.libraries.movieapp.utils.ModelsFactory
 import com.eagskunst.libraries.movieapp.utils.base.BaseActivity
 import com.eagskunst.libraries.movieapp.utils.enums.Grid
@@ -30,6 +31,7 @@ class MainActivity : BaseActivity() {
         binding.controller = homeController
         binding.myListCard = myListCard
         binding.layoutManagerType = Grid
+        binding.imgUrl = Constants.FEATURED_MOVIE_IMG_URL
 
         homeController.setData(ModelsFactory.createCategoriesModels())
     }

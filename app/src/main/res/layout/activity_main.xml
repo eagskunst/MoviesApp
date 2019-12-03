@@ -7,6 +7,7 @@
         <import type="com.eagskunst.libraries.movieapp.app.models.CategoryCard"/>
         <import type="com.eagskunst.libraries.movieapp.HomeController"/>
         <import type="com.eagskunst.libraries.movieapp.utils.enums.LayoutManagerTypes"/>
+
         <variable
             name="myListCard"
             type="CategoryCard" />
@@ -19,23 +20,37 @@
             name="layoutManagerType"
             type="LayoutManagerTypes" />
 
+        <variable
+            name="imgUrl"
+            type="String" />
+
     </data>
 
-    <LinearLayout
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        tools:context=".MainActivity">
+        android:layout_height="wrap_content">
 
-        <include layout="@layout/view_holder_gradient_card"
-            app:model="@{myListCard}"/>
-
-        <com.airbnb.epoxy.EpoxyRecyclerView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:attachEpoxyController="@{controller}"
-            app:epoxyLayoutManager="@{layoutManagerType}"
-            />
+            android:orientation="vertical"
+            tools:context=".MainActivity">
 
-    </LinearLayout>
+            <include layout="@layout/card_featured_movie"
+                app:imgUrl="@{imgUrl}"/>
+
+            <include layout="@layout/view_holder_gradient_card"
+                app:model="@{myListCard}"/>
+
+            <com.airbnb.epoxy.EpoxyRecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:attachEpoxyController="@{controller}"
+                app:epoxyLayoutManager="@{layoutManagerType}"
+                />
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
 </layout>

@@ -42,6 +42,7 @@
                 android:padding="12dp"
                 android:text="@{model.title}"
                 android:textColor="@color/white"
+                android:fontFamily="@font/robotomono_medium"
                 android:textAllCaps="true" />
 
         </FrameLayout>
