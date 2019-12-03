@@ -7,11 +7,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.airbnb.epoxy.CarouselModelBuilder
 import com.airbnb.epoxy.EpoxyModel
+import com.bumptech.glide.Glide
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.snackbar.Snackbar
 import java.util.regex.Pattern
@@ -86,6 +88,14 @@ fun View.longSnackbar(msg: Int) = Snackbar.make(this, msg, Snackbar.LENGTH_LONG)
 
 fun AppCompatActivity.longToast(msg: Int) {
     Toast.makeText(this, msg, Toast.LENGTH_LONG).show()
+}
+
+fun ImageView.loadImageWithGlide(imgUrl: String?){
+    imgUrl?.let {
+        Glide.with(this.context)
+            .load(imgUrl)
+            .into(this)
+    }
 }
 
 //From Epoxy Wiki
