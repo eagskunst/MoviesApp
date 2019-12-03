@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.eagskunst.libraries.movieapp.app.models.CategoryCard"/>
+        <import type="android.view.View.OnClickListener"/>
+        <import type="androidx.core.content.ContextCompat"/>
+
+        <variable
+            name="model"
+            type="CategoryCard" />
+        <variable
+            name="navBtnClickListener"
+            type="OnClickListener" />
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.movie_list.MovieListActivity">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:fitsSystemWindows="true"
+            android:layout_gravity="center|top"
+            android:theme="@style/Theme.MaterialComponents.Light.DarkActionBar">
+
+            <com.google.android.material.appbar.CollapsingToolbarLayout
+                android:id="@+id/collapsingToolbar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:cardGradient="@{model}"
+                android:fitsSystemWindows="true"
+                app:expandedTitleMarginEnd="56dp"
+                app:expandedTitleMarginStart="40dp"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+
+                <ImageView
+                    android:id="@+id/movieListBackgroundIv"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fitsSystemWindows="true"
+                    android:scaleType="centerCrop"
+                    android:src="@{ContextCompat.getDrawable(context, model.img)}"
+                    android:alpha="0.3"
+                    tools:src="@drawable/movie_bg"
+                    android:transitionName="@string/categoryImage"
+                    app:layout_collapseMode="parallax" />
+
+                <androidx.appcompat.widget.Toolbar
+                    android:layout_width="match_parent"
+                    android:layout_height="85dp"
+                    app:layout_collapseMode="pin"
+                    app:titleTextColor="@color/white"
+                    app:contentInsetStart="0dp"
+                    app:contentInsetStartWithNavigation="0dp"
+                    app:contentInsetEnd="0dp"
+                    app:contentInsetLeft="0dp"
+                    app:contentInsetEndWithActions="0dp"
+                    app:titleMargin="0dp"
+                    app:titleMargins="0dp"
+                    app:contentInsetRight="0dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center">
+
+                        <ImageButton
+                            android:layout_width="28dp"
+                            android:layout_height="28dp"
+                            android:layout_alignParentStart="true"
+                            android:background="?attr/selectableItemBackground"
+                            android:onClick="@{navBtnClickListener}"
+                            android:src="@drawable/ic_arrow_back"
+                            android:layout_marginStart="10dp"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:tint="@color/white" />
+
+                        <TextView
+                            android:id="@+id/movieListTitleTv"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/robotomono_medium"
+                            android:gravity="center"
+                            android:text="@{model.title}"
+                            android:textAllCaps="true"
+                            android:textColor="@color/white"
+                            android:textSize="18sp"
+                            android:transitionName="@string/categoryTitle"
+                            tools:text="Because you watched" />
+
+                    </RelativeLayout>
+
+                </androidx.appcompat.widget.Toolbar>
+
+            </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="8dp"
+                android:padding="16dp"
+                android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce rutrum, urna sit amet faucibus eleifend, justo metus dignissim justo, a varius nisi metus eget dolor. Ut eget magna ac orci finibus hendrerit. Aenean eu turpis sem. Ut faucibus tempor nunc at dapibus. Phasellus sodales, orci sed commodo ullamcorper, turpis leo semper mi, vitae suscipit arcu turpis vitae velit. Aliquam eu suscipit diam. Praesent sed est id magna sodales pellentesque. Sed cursus, mi eget euismod consequat, ante elit convallis urna, quis scelerisque ante nulla eget ligula. Pellentesque dignissim vel elit sed euismod. Nam vel ullamcorper augue. Etiam sed elementum risus, quis pharetra nulla. Sed suscipit malesuada sollicitudin. Cras in massa sem. Nunc dictum orci non nunc imperdiet maximus. Phasellus non finibus enim. Aenean risus purus, dapibus placerat tincidunt gravida, dignissim sit amet metus."
+                android:textSize="24sp" />
+
+
+        </androidx.core.widget.NestedScrollView>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

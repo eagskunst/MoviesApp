@@ -16,7 +16,8 @@ object ModelsFactory {
                 colors = listOf(
                     R.color.colorGradient1,
                     R.color.colorGradient2
-                )
+                ),
+                id = 1
             ),
             CategoryCard(
                 title = "Trending now",
@@ -24,7 +25,8 @@ object ModelsFactory {
                 colors = listOf(
                     R.color.colorGradient3,
                     R.color.colorGradient4
-                )
+                ),
+                id = 2
             ),
             CategoryCard(
                 title = "Top picks",
@@ -32,7 +34,8 @@ object ModelsFactory {
                 colors = listOf(
                     R.color.colorGradient5,
                     R.color.colorGradient6
-                )
+                ),
+                id = 3
             ),
             CategoryCard(
                 title = "Popular",
@@ -40,7 +43,8 @@ object ModelsFactory {
                 colors = listOf(
                     R.color.colorGradient7,
                     R.color.colorGradient8
-                )
+                ),
+                id = 4
             )
         )
     }

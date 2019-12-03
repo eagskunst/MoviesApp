@@ -5,10 +5,14 @@
 
     <data>
         <import type="com.eagskunst.libraries.movieapp.app.models.CategoryCard"/>
+        <import type="android.view.View.OnClickListener"/>
         <import type="androidx.core.content.ContextCompat"/>
         <variable
             name="model"
             type="CategoryCard" />
+        <variable
+            name="clickListener"
+            type="OnClickListener" />
 
     </data>
 
@@ -19,7 +23,9 @@
         app:cardCornerRadius="8dp"
         app:cardElevation="5dp"
         android:layout_margin="12dp"
-        app:cardGradient="@{model}">
+        app:cardGradient="@{model}"
+        android:onClick="@{clickListener}"
+        >
 
         <FrameLayout
             android:layout_width="match_parent"
@@ -27,19 +33,23 @@
             >
 
             <ImageView
+                android:id="@+id/categoryIv"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:alpha="0.3"
                 android:scaleType="centerCrop"
+                android:transitionName="@string/categoryImage"
                 android:src="@{ContextCompat.getDrawable(context, model.img)}"/>
 
             <TextView
+                android:id="@+id/categoryTv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:gravity="start"
                 android:textSize="18sp"
                 android:padding="12dp"
+                android:transitionName="@string/categoryTitle"
                 android:text="@{model.title}"
                 android:textColor="@color/white"
                 android:fontFamily="@font/robotomono_medium"

@@ -5,8 +5,9 @@
 
     <data>
         <import type="com.eagskunst.libraries.movieapp.app.models.CategoryCard"/>
-        <import type="com.eagskunst.libraries.movieapp.HomeController"/>
+        <import type="com.eagskunst.libraries.movieapp.ui.home.HomeController"/>
         <import type="com.eagskunst.libraries.movieapp.utils.enums.LayoutManagerTypes"/>
+        <import type="android.view.View.OnClickListener"/>
 
         <variable
             name="myListCard"
@@ -14,7 +15,7 @@
 
         <variable
             name="controller"
-            type="HomeController" />
+            type="com.eagskunst.libraries.movieapp.ui.home.HomeController" />
 
         <variable
             name="layoutManagerType"
@@ -23,6 +24,10 @@
         <variable
             name="imgUrl"
             type="String" />
+
+        <variable
+            name="clickListener"
+            type="OnClickListener" />
 
     </data>
 
@@ -34,13 +39,15 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            tools:context=".MainActivity">
+            tools:context=".ui.home.MainActivity">
 
             <include layout="@layout/card_featured_movie"
                 app:imgUrl="@{imgUrl}"/>
 
             <include layout="@layout/view_holder_gradient_card"
-                app:model="@{myListCard}"/>
+                app:model="@{myListCard}"
+                app:clickListener="@{clickListener}"
+                />
 
             <com.airbnb.epoxy.EpoxyRecyclerView
                 android:layout_width="match_parent"

@@ -1,7 +1,9 @@
 package com.eagskunst.libraries.movieapp.utils
 
 import android.util.Log
+import android.view.View
 import android.widget.ImageView
+import androidx.cardview.widget.CardView
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.GridLayoutManager
 import com.airbnb.epoxy.EpoxyController
@@ -10,7 +12,6 @@ import com.eagskunst.libraries.movieapp.app.models.CategoryCard
 import com.eagskunst.libraries.movieapp.utils.enums.Grid
 import com.eagskunst.libraries.movieapp.utils.enums.LayoutManagerTypes
 import com.eagskunst.libraries.movieapp.utils.enums.Linear
-import com.google.android.material.card.MaterialCardView
 import com.skydoves.rainbow.Rainbow
 import com.skydoves.rainbow.RainbowOrientation
 import com.skydoves.rainbow.contextColor
@@ -20,13 +21,12 @@ import com.skydoves.rainbow.contextColor
  */
 
 @BindingAdapter("app:cardGradient")
-fun applyRainbowGradient(view: MaterialCardView, model: CategoryCard){
-    Log.d("Check", "Radius: ${view.radius.toInt() / 2}")
+fun applyRainbowGradient(view: View, model: CategoryCard){
     Rainbow(view).palette {
         model.colors.forEach { +contextColor(it) }
     }.background(
         orientation = RainbowOrientation.LEFT_RIGHT,
-        radius = view.radius.toInt() / 2
+        radius = if (view is CardView) view.radius.toInt() / 2 else 0
     )
 }
 
