@@ -8,6 +8,8 @@
         <import type="com.eagskunst.libraries.movieapp.app.models.CategoryCard"/>
         <import type="android.view.View.OnClickListener"/>
         <import type="androidx.core.content.ContextCompat"/>
+        <import type="com.eagskunst.libraries.movieapp.ui.movie_list.MovieListController"/>
+        <import type="com.eagskunst.libraries.movieapp.utils.enums.LayoutManagerTypes"/>
 
         <variable
             name="model"
@@ -15,6 +17,13 @@
         <variable
             name="navBtnClickListener"
             type="OnClickListener" />
+        <variable
+            name="controller"
+            type="MovieListController" />
+        <variable
+            name="managerType"
+            type="LayoutManagerTypes" />
+
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -60,6 +69,7 @@
                     app:contentInsetStart="0dp"
                     app:contentInsetStartWithNavigation="0dp"
                     app:contentInsetEnd="0dp"
+                    android:layout_gravity="center"
                     app:contentInsetLeft="0dp"
                     app:contentInsetEndWithActions="0dp"
                     app:titleMargin="0dp"
@@ -68,13 +78,13 @@
 
                     <RelativeLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center">
+                        android:layout_height="match_parent">
 
                         <ImageButton
                             android:layout_width="28dp"
                             android:layout_height="28dp"
                             android:layout_alignParentStart="true"
+                            android:layout_centerVertical="true"
                             android:background="?attr/selectableItemBackground"
                             android:onClick="@{navBtnClickListener}"
                             android:src="@drawable/ic_arrow_back"
@@ -89,6 +99,7 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/robotomono_medium"
                             android:gravity="center"
+                            android:layout_centerInParent="true"
                             android:text="@{model.title}"
                             android:textAllCaps="true"
                             android:textColor="@color/white"
@@ -107,15 +118,16 @@
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+            android:layout_marginTop="-80dp"
+            >
 
-            <TextView
+            <com.airbnb.epoxy.EpoxyRecyclerView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:lineSpacingExtra="8dp"
-                android:padding="16dp"
-                android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce rutrum, urna sit amet faucibus eleifend, justo metus dignissim justo, a varius nisi metus eget dolor. Ut eget magna ac orci finibus hendrerit. Aenean eu turpis sem. Ut faucibus tempor nunc at dapibus. Phasellus sodales, orci sed commodo ullamcorper, turpis leo semper mi, vitae suscipit arcu turpis vitae velit. Aliquam eu suscipit diam. Praesent sed est id magna sodales pellentesque. Sed cursus, mi eget euismod consequat, ante elit convallis urna, quis scelerisque ante nulla eget ligula. Pellentesque dignissim vel elit sed euismod. Nam vel ullamcorper augue. Etiam sed elementum risus, quis pharetra nulla. Sed suscipit malesuada sollicitudin. Cras in massa sem. Nunc dictum orci non nunc imperdiet maximus. Phasellus non finibus enim. Aenean risus purus, dapibus placerat tincidunt gravida, dignissim sit amet metus."
-                android:textSize="24sp" />
+                android:layout_height="match_parent"
+                app:attachEpoxyController="@{controller}"
+                app:epoxyLayoutManager="@{managerType}"
+                />
 
 
         </androidx.core.widget.NestedScrollView>

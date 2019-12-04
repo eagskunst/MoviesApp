@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.eagskunst.libraries.movieapp.app.models.MovieCard"/>
+
+        <variable
+            name="movieCard"
+            type="MovieCard" />
+
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="240dp"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="5dp"
+        app:contentPadding="0dp"
+        app:cardPreventCornerOverlap="true"
+        android:layout_margin="12dp">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:loadImage="@{movieCard.imgUrl}"
+            android:scaleType="fitXY"
+            />
+
+    </com.google.android.material.card.MaterialCardView>
+</layout>
