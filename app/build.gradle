@@ -122,4 +122,7 @@ dependencies {
 
     //Rainbow
     implementation "com.github.skydoves:rainbow:1.0.1"
+
+    //Circle avatar
+    implementation 'de.hdodenhof:circleimageview:3.0.1'
 }
