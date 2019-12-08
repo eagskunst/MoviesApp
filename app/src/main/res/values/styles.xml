@@ -10,4 +10,13 @@
         <item name="android:windowContentTransitions">true</item>
     </style>
 
+    <style name="BackButtonStyle">
+        <item name="android:background">?attr/selectableItemBackground</item>
+        <item name="android:src">@drawable/ic_arrow_back</item>
+        <item name="android:scaleType">fitXY</item>
+        <item name="android:tint">@color/white</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+    </style>
+
 </resources>
