@@ -5,4 +5,7 @@
     <string name="unknown_error">Oops, something wrong happened.</string>
     <string name="undefined" translatable="false">Undefined</string>
     <string name="connectivity_exception" translatable="false">No connectivity exception</string>
+    <string name="studio_text">Studio</string>
+    <string name="genre_text">Genre</string>
+    <string name="release">Release</string>
 </resources>
