@@ -20,7 +20,9 @@
 
         <com.airbnb.epoxy.EpoxyRecyclerView
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            app:attachEpoxyController="@{controller}"
+            />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

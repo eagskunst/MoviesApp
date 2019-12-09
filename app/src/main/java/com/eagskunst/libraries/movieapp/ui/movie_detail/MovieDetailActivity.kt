@@ -23,9 +23,12 @@ class MovieDetailActivity : AppCompatActivity(), MovieDetailCallback {
         controller.setData(ModelsFactory.createFakeMovie())
     }
 
-    override fun onBackButtonCallback() {
-
+    override fun onBackPressed() {
+        super.onBackPressed()
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)
     }
+
+    override fun onBackButtonCallback() = onBackPressed()
 
     override fun onFavoriteCallback(movie: Movie) {
         Log.d("MovieDetailActivity", "Movie: $movie")

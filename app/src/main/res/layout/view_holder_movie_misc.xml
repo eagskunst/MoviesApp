@@ -16,7 +16,9 @@
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"
         android:layout_marginStart="@dimen/movie_descp_margin"
         android:layout_marginEnd="@dimen/movie_descp_margin">
 
@@ -26,7 +28,7 @@
             android:orientation="horizontal">
 
             <TextView
-                android:layout_width="60dp"
+                android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:textSize="13sp"
                 android:textColor="@color/black"
@@ -51,7 +53,7 @@
             android:orientation="horizontal">
 
             <TextView
-                android:layout_width="60dp"
+                android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:textSize="13sp"
                 android:textColor="@color/black"
@@ -76,7 +78,7 @@
             android:orientation="horizontal">
 
             <TextView
-                android:layout_width="60dp"
+                android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:textSize="13sp"
                 android:textColor="@color/black"

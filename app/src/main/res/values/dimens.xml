@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="back_btn_dimen">34dp</dimen>
-    <dimen name="movie_descp_margin">15dp</dimen>
+    <dimen name="movie_descp_margin">35dp</dimen>
 </resources>

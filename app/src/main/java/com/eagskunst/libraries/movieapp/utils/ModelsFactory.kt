@@ -99,7 +99,7 @@ object ModelsFactory {
             genres = "Action, Adventure, Fantasy",
             releaseDate = "21/06/2018",
             actors = (0..6).map { createFakeActor(it) },
-            photoUrl = "https://ae01.alicdn.com/kf/HTB17ZyhLAvoK1RjSZFDq6xY3pXa2/Custom-Canvas-Wall-Decor-Sexy-Princess-Mera-Aquaman-Poster-Aquaman-Stickers-Mural-Jason-Momoa-Superhero-Film.jpg",
+            photoUrl = "https://images-na.ssl-images-amazon.com/images/I/A1t7EBA+qvL._RI_.jpg",
             description = "In 1985 Maine, lighthouse keeper Thomas Curry rescues Atlanna, the queen of the underwater nation of Atlantis, during a storm. They eventually fall in love and have a son named Arthur, who is born with the power to communicate with marine lifeforms."
         )
     }
