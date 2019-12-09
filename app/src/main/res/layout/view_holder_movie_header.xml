@@ -6,6 +6,7 @@
     <data>
         <import type="android.view.View.OnClickListener"/>
         <import type="androidx.lifecycle.LiveData"/>
+        <import type="com.eagskunst.libraries.movieapp.app.models.Movie"/>
 
         <variable
             name="backButtonClickListener"
@@ -19,6 +20,10 @@
             name="isSaved"
             type="Boolean" />
 
+        <variable
+            name="movie"
+            type="Movie" />
+
     </data>
 
     <FrameLayout
@@ -29,6 +34,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="centerCrop"
+            app:loadImage="@{movie.photoUrl}"
             tools:src="@drawable/movie_bg" />
 
         <ImageButton
@@ -36,6 +42,7 @@
             android:layout_height="@dimen/back_btn_dimen"
             style="@style/BackButtonStyle"
             android:layout_marginStart="10dp"
+            android:onClick="@{backButtonClickListener}"
             android:layout_marginTop="25dp" />
 
         <ImageButton
@@ -44,6 +51,7 @@
             tools:src="@drawable/ic_favorite_border"
             android:src="@{isSaved ? @drawable/ic_favorite : @drawable/ic_favorite_border}"
             style="@style/BackButtonStyle"
+            android:onClick="@{likeButtonClickListener}"
             android:layout_marginEnd="10dp"
             android:layout_marginTop="25dp"
             android:layout_gravity="top|end" />

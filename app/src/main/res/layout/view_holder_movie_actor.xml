@@ -1,32 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
-    android:layout_width="52dp"
-    android:layout_height="wrap_content"
-    android:layout_marginStart="@dimen/movie_descp_margin"
-    >
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:layout_width="match_parent"
-        android:layout_height="52dp"
-        android:layout_gravity="center"
-        android:layout_marginBottom="8dp"
-        tools:src="@drawable/ic_launcher_foreground"/>
+    <data>
 
-    <TextView
-        android:layout_width="wrap_content"
+        <import type="com.eagskunst.libraries.movieapp.app.models.Actor"/>
+
+        <variable
+            name="actor"
+            type="Actor" />
+
+    </data>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="52dp"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:maxWidth="50dp"
-        android:gravity="center"
-        android:fontFamily="@font/robotomono_regular"
-        android:textSize="13sp"
-        android:textColor="@color/black"
-        tools:text="Jason Momoa"
-        android:ellipsize="marquee"
-        />
+        android:layout_marginStart="@dimen/movie_descp_margin">
 
-</LinearLayout>
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="8dp"
+            app:loadImage="@{actor.photoUrl}"
+            tools:src="@drawable/ic_launcher_foreground" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:maxWidth="50dp"
+            android:gravity="center"
+            android:fontFamily="@font/robotomono_regular"
+            android:textSize="13sp"
+            android:textColor="@color/black"
+            tools:text="Jason Momoa"
+            android:text="@{actor.name}"
+            android:ellipsize="marquee" />
+
+    </LinearLayout>
+</layout>

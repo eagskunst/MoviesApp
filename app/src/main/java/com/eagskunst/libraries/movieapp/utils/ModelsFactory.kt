@@ -1,8 +1,11 @@
 package com.eagskunst.libraries.movieapp.utils
 
 import com.eagskunst.libraries.movieapp.R
+import com.eagskunst.libraries.movieapp.app.models.Actor
 import com.eagskunst.libraries.movieapp.app.models.CategoryCard
+import com.eagskunst.libraries.movieapp.app.models.Movie
 import com.eagskunst.libraries.movieapp.app.models.MovieCard
+import kotlin.random.Random
 
 /**
  * Created by eagskunst in 1/12/2019.
@@ -86,4 +89,24 @@ object ModelsFactory {
             )
         )
     }
+
+    fun createFakeMovie() : Movie {
+        return Movie(
+            id = Random.nextInt().toString(),
+            name = "Aquaman",
+            rating = 4f,
+            studio = "Warner Bros",
+            genres = "Action, Adventure, Fantasy",
+            releaseDate = "21/06/2018",
+            actors = (0..6).map { createFakeActor(it) },
+            photoUrl = "https://ae01.alicdn.com/kf/HTB17ZyhLAvoK1RjSZFDq6xY3pXa2/Custom-Canvas-Wall-Decor-Sexy-Princess-Mera-Aquaman-Poster-Aquaman-Stickers-Mural-Jason-Momoa-Superhero-Film.jpg",
+            description = "In 1985 Maine, lighthouse keeper Thomas Curry rescues Atlanna, the queen of the underwater nation of Atlantis, during a storm. They eventually fall in love and have a son named Arthur, who is born with the power to communicate with marine lifeforms."
+        )
+    }
+
+    fun createFakeActor(id: Any): Actor = Actor(
+        id = id.toString(),
+        name = "Leonardo DiCaprio",
+        photoUrl = "https://upload.wikimedia.org/wikipedia/commons/4/46/Leonardo_Dicaprio_Cannes_2019.jpg"
+    )
 }
