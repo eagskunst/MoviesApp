@@ -55,7 +55,7 @@
                     android:layout_height="match_parent"
                     android:fitsSystemWindows="true"
                     android:scaleType="centerCrop"
-                    android:src="@{ContextCompat.getDrawable(context, model.img)}"
+                    app:loadImage="@{model.imgUrl}"
                     android:alpha="0.3"
                     tools:src="@drawable/movie_bg"
                     android:transitionName="@string/categoryImage"

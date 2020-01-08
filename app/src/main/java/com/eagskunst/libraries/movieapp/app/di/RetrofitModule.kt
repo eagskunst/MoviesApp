@@ -1,6 +1,7 @@
 package com.eagskunst.libraries.movieapp.app.di
 
 import android.content.res.Resources
+import com.eagskunst.libraries.movieapp.R
 import com.eagskunst.libraries.movieapp.app.app_di.MovieAppScope
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
@@ -18,10 +19,8 @@ class RetrofitModule {
 
     @Provides
     @MovieAppScope
-    fun provideBaseUrl(resources: Resources): String {
-        TODO("Add base URL to resources")
-        return "www.google.com"
-    }
+    fun provideBaseUrl(resources: Resources): String =
+        resources.getString(R.string.api_url)
 
 
     @Provides

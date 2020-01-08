@@ -40,9 +40,9 @@
             android:layout_height="match_parent"
             android:orientation="vertical"
             tools:context=".ui.home.MainActivity">
-
+<!--
             <include layout="@layout/card_featured_movie"
-                app:imgUrl="@{imgUrl}"/>
+                app:imgUrl="@{imgUrl}"/>-->
 
             <include layout="@layout/view_holder_gradient_card"
                 app:model="@{myListCard}"

@@ -10,4 +10,4 @@ import kotlinx.android.parcel.Parcelize
 data class CategoryCard(val id: Int,
                         val title: String = "",
                         val colors: List<Int> = listOf(),
-                        val img: Int = 0) : Parcelable
+                        val imgUrl: String = "") : Parcelable

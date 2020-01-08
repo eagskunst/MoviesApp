@@ -1,7 +1,7 @@
 package com.eagskunst.libraries.movieapp.app.app_di
 
 import com.eagskunst.libraries.movieapp.app.di.ApiModule
-import com.eagskunst.libraries.movieapp.app.di.ViewModelFactoryModule
+import com.eagskunst.libraries.movieapp.app.network.api.MovieListApi
 import dagger.Component
 
 /**
@@ -9,5 +9,7 @@ import dagger.Component
  */
 
 @MovieAppScope
-@Component(modules = [MovieAppModule::class, ApiModule::class, ViewModelFactoryModule::class])
-interface MovieAppComponent
+@Component(modules = [MovieAppModule::class, ApiModule::class])
+interface MovieAppComponent {
+    fun movieListApi(): MovieListApi
+}

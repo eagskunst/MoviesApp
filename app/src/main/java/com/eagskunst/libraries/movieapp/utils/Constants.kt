@@ -12,4 +12,6 @@ object Constants {
     const val TRANSITION_CATEGORY_NAME_TV = "categoryTitle"
     const val TRANSITION_CATEGORY_IMAGE_IV = "categoryIv"
 
+    const val BASE_IMG_URL = "https://image.tmdb.org/t/p/w500"
+
 }

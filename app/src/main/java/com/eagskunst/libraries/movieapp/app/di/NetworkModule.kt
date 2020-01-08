@@ -6,6 +6,7 @@ import com.eagskunst.libraries.movieapp.BuildConfig
 import com.eagskunst.libraries.movieapp.app.MoviesApp
 import com.eagskunst.libraries.movieapp.app.app_di.MovieAppScope
 import com.eagskunst.libraries.movieapp.app.interceptor.ConnectivityInterceptor
+import com.eagskunst.libraries.movieapp.utils.ApiKeys
 import dagger.Module
 import dagger.Provides
 import dagger.Reusable
@@ -50,14 +51,23 @@ class NetworkModule {
                 val requestBuilder = chain.request().newBuilder()
                     .addHeader(
                         "User-Agent",
-                        "KinesisApp-ANDROID " + " BUILD VERSION: " + BuildConfig.VERSION_NAME + " SMARTPHONE: " + Build.MODEL + " ANDROID VERSION: " + Build.VERSION.RELEASE
+                        "MoviesApp" + " BUILD VERSION: " + BuildConfig.VERSION_NAME + " SMARTPHONE: " + Build.MODEL + " ANDROID VERSION: " + Build.VERSION.RELEASE
                     )
                     .addHeader("Content-Type", "application/json")
-                val request = requestBuilder.build()
+
+                val httpUrl = chain.request()
+                    .url
+                    .newBuilder()
+                    .addQueryParameter("api_key", ApiKeys.MOVIE_API_KEY).build()
+
+                val request = requestBuilder
+                    .url(httpUrl)
+                    .build()
+
                 chain.proceed(request)
             }
-            .readTimeout(40, TimeUnit.SECONDS)
-            .connectTimeout(40, TimeUnit.SECONDS)
+            .readTimeout(60, TimeUnit.SECONDS)
+            .connectTimeout(60, TimeUnit.SECONDS)
             .cache(cache)
             .build()
     }

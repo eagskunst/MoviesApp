@@ -14,7 +14,6 @@ import com.eagskunst.libraries.movieapp.databinding.ActivityMainBinding
 import com.eagskunst.libraries.movieapp.ui.movie_list.MovieListActivity
 import com.eagskunst.libraries.movieapp.utils.Constants
 import com.eagskunst.libraries.movieapp.utils.ModelsFactory
-import com.eagskunst.libraries.movieapp.utils.Utils
 import com.eagskunst.libraries.movieapp.utils.base.BaseActivity
 import com.eagskunst.libraries.movieapp.utils.enums.Grid
 import androidx.core.util.Pair
@@ -28,7 +27,7 @@ class MainActivity : BaseActivity(), HomeItemClickListener {
             R.color.colorGradient4,
             R.color.colorRedError
         ),
-        img = R.drawable.mylist_bg,
+        imgUrl = "https://images.unsplash.com/photo-1510827220565-c6a086ff31c8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80",
         id = 0
     )
 

@@ -15,8 +15,8 @@ object ModelsFactory {
     fun createCategoriesModels(): List<CategoryCard>{
         return listOf(
             CategoryCard(
-                title = "Because you watched",
-                img = R.drawable.movie_bg,
+                title = "Now Playing",
+                imgUrl = "https://images.unsplash.com/photo-1536440136628-849c177e76a1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=625&q=80",
                 colors = listOf(
                     R.color.colorGradient1,
                     R.color.colorGradient2
@@ -24,8 +24,8 @@ object ModelsFactory {
                 id = 1
             ),
             CategoryCard(
-                title = "Trending now",
-                img = R.drawable.movie_bg,
+                title = "Popular",
+                imgUrl = "https://images.unsplash.com/photo-1568111561564-08726a1563e1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=438&q=80",
                 colors = listOf(
                     R.color.colorGradient3,
                     R.color.colorGradient4
@@ -33,8 +33,8 @@ object ModelsFactory {
                 id = 2
             ),
             CategoryCard(
-                title = "Top picks",
-                img = R.drawable.movie_bg,
+                title = "Top rated",
+                imgUrl = "https://images.unsplash.com/photo-1572177191856-3cde618dee1f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=282&q=80",
                 colors = listOf(
                     R.color.colorGradient5,
                     R.color.colorGradient6
@@ -42,8 +42,8 @@ object ModelsFactory {
                 id = 3
             ),
             CategoryCard(
-                title = "Popular",
-                img = R.drawable.movie_bg,
+                title = "Upcoming",
+                imgUrl = "https://images.unsplash.com/photo-1507924538820-ede94a04019d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80",
                 colors = listOf(
                     R.color.colorGradient7,
                     R.color.colorGradient8

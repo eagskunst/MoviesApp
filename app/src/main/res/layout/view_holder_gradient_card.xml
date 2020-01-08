@@ -39,7 +39,7 @@
                 android:alpha="0.3"
                 android:scaleType="centerCrop"
                 android:transitionName="@string/categoryImage"
-                android:src="@{ContextCompat.getDrawable(context, model.img)}"/>
+                app:loadImage="@{model.imgUrl}"/>
 
             <TextView
                 android:id="@+id/categoryTv"

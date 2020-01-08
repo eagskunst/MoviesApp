@@ -1,6 +1,5 @@
 package com.eagskunst.libraries.movieapp.utils
 
-import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import androidx.cardview.widget.CardView
