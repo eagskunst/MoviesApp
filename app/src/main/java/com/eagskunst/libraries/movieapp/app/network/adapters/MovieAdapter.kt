@@ -7,7 +7,6 @@ import com.eagskunst.libraries.movieapp.app.network.models.movie_detail.ActorRes
 import com.eagskunst.libraries.movieapp.app.network.models.movie_detail.MovieDetailResponse
 import com.eagskunst.libraries.movieapp.app.network.models.movie_list.MovieListResponse
 import com.eagskunst.libraries.movieapp.app.network.models.movie_list.MovieShortDetail
-import com.eagskunst.libraries.movieapp.utils.Constants
 import com.eagskunst.libraries.movieapp.utils.Utils
 
 /**
@@ -46,7 +45,7 @@ class MovieAdapter {
         movieDetailResponse?.genres?.forEach {
             it?.name?.let { name -> builder.append("$name, ") }
         }
-        return builder.removeRange(0, builder.length - 1).toString()
+        return builder.removeRange(builder.length - 2, builder.length).toString()
     }
 
     private fun getStudioFromMovieDetailResponse(movieDetailResponse: MovieDetailResponse?) =
@@ -59,6 +58,7 @@ class MovieAdapter {
         if(movieDetailResponse == null) return null
         val actors = fromActorResponseListToActorList(movieDetailResponse.credits?.cast)
         val studio = getStudioFromMovieDetailResponse(movieDetailResponse)
+        val genres = getGenresFromMovieDetailResponse(movieDetailResponse)
 
         return with(movieDetailResponse){
             Movie(
@@ -69,7 +69,7 @@ class MovieAdapter {
                 actors = actors,
                 rating = voteAverage?.toFloat() ?: 0f,
                 studio = studio,
-                genres = getGenresFromMovieDetailResponse(this),
+                genres = genres,
                 releaseDate = releaseDate
             )
         }

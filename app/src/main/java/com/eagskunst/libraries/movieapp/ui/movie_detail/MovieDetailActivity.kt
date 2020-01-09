@@ -36,6 +36,7 @@ class MovieDetailActivity : BaseActivity(), MovieDetailCallback {
         initComponent(MoviesApp.appInstance.appComponent)
         binding = DataBindingUtil.setContentView(this,
             R.layout.activity_movie_detail)
+        binding.lifecycleOwner = this
         val controller = MovieDetailController(this)
         binding.controller = controller
         binding.viewModel = viewModel
@@ -59,6 +60,8 @@ class MovieDetailActivity : BaseActivity(), MovieDetailCallback {
                 controller.setData(it)
             }
         })
+
+        getMovieDetail()
     }
 
     private fun getMovieDetail(){

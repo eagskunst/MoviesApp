@@ -46,6 +46,7 @@ class MovieListActivity : BaseActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_movie_list)
         binding.run {
             model = intent.getParcelableExtra(Constants.CATEGORY_CARD_ID)
+            lifecycleOwner = this@MovieListActivity
             controller = MovieListController {  }
             navBtnClickListener  = View.OnClickListener {
                 onBackPressed()
