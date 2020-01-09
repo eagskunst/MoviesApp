@@ -104,8 +104,8 @@ object ModelsFactory {
         )
     }
 
-    fun createFakeActor(id: Any): Actor = Actor(
-        id = id.toString(),
+    fun createFakeActor(id: Int): Actor = Actor(
+        id = id,
         name = "Leonardo DiCaprio",
         photoUrl = "https://upload.wikimedia.org/wikipedia/commons/4/46/Leonardo_Dicaprio_Cannes_2019.jpg"
     )

@@ -95,7 +95,9 @@ class MovieListActivity : BaseActivity() {
     }
 
     private fun onMovieCardClick(id: Int){
-        val intent = Intent(this, MovieDetailActivity::class.java)
+        val intent = Intent(this, MovieDetailActivity::class.java).apply {
+            putExtra(Constants.MOVIE_ID, id)
+        }
         startActivity(intent)
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
     }

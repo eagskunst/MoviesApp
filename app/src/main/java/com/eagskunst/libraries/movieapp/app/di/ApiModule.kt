@@ -1,6 +1,7 @@
 package com.eagskunst.libraries.movieapp.app.di
 
 import com.eagskunst.libraries.movieapp.app.app_di.MovieAppScope
+import com.eagskunst.libraries.movieapp.app.network.api.MovieDetailApi
 import com.eagskunst.libraries.movieapp.app.network.api.MovieListApi
 import dagger.Module
 import dagger.Provides
@@ -14,4 +15,8 @@ class ApiModule {
     @Provides
     @MovieAppScope
     fun provideMovieListApi(retrofit: Retrofit): MovieListApi = retrofit.create(MovieListApi::class.java)
+
+    @Provides
+    @MovieAppScope
+    fun provideMoveiDetailApi(retrofit: Retrofit): MovieDetailApi = retrofit.create(MovieDetailApi::class.java)
 }
