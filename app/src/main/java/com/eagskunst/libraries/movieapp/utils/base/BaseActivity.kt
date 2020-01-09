@@ -11,6 +11,7 @@ import androidx.navigation.navOptions
 import com.eagskunst.libraries.movieapp.R
 import com.eagskunst.libraries.movieapp.app.app_di.MovieAppComponent
 import com.eagskunst.libraries.movieapp.utils.Utils
+import com.eagskunst.libraries.movieapp.utils.indefiniteSnackbar
 import com.eagskunst.libraries.movieapp.utils.longSnackbar
 import com.eagskunst.libraries.movieapp.utils.snackbar
 import javax.inject.Inject
@@ -48,10 +49,21 @@ abstract class BaseActivity: AppCompatActivity {
         else mainView.longSnackbar(msg)
         snack.view.setBackgroundColor(ContextCompat.getColor(this, R.color.colorRedError))
     }
+
     fun showSnackError(msg : Int, long: Boolean = false){
         val snack = if(!long)mainView.snackbar(msg)
         else mainView.longSnackbar(msg)
         snack.view.setBackgroundColor(ContextCompat.getColor(this, R.color.colorRedError))
+    }
+
+    fun showSnackErrorWithAction(msg: String, action: () -> Unit){
+        val snackbar = mainView.indefiniteSnackbar(msg)
+        snackbar.setAction(R.string.retry_text){ action() }
+    }
+
+    fun showSnackErrorWithAction(msg: Int, action: () -> Unit){
+        val snackbar = mainView.indefiniteSnackbar(msg)
+        snackbar.setAction(R.string.retry_text){ action() }
     }
 
     fun showSnackSuccess(msg : String, long: Boolean = false){

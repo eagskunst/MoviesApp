@@ -11,7 +11,7 @@ import javax.inject.Inject
 
 class MovieListViewModel @Inject constructor(private val movieListRepo: MovieListRepository) : BaseViewModel() {
 
-    private val _movieList = MutableLiveData<List<MovieCard>>()
+    private val _movieList = MutableLiveData<List<MovieCard>>(listOf())
     val movieList: LiveData<List<MovieCard>> = _movieList
 
 

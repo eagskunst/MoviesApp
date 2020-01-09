@@ -8,4 +8,5 @@
     <string name="studio_text">Studio</string>
     <string name="genre_text">Genre</string>
     <string name="release">Release</string>
+    <string name="retry_text">Retry</string>
 </resources>

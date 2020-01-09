@@ -129,5 +129,14 @@
 
         </androidx.core.widget.NestedScrollView>
 
+
+        <com.eagskunst.libraries.movieapp.utils.views.MovieProgressView
+            android:id="@+id/progress_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            />
+
+
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

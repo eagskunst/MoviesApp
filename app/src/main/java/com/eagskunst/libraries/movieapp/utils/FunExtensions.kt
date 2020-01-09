@@ -83,6 +83,8 @@ fun View.snackbar(msg: Int) = Snackbar.make(this, msg, Snackbar.LENGTH_SHORT)
 fun View.snackbar(msg: String) = Snackbar.make(this, msg, Snackbar.LENGTH_SHORT)
 fun View.longSnackbar(msg: String) = Snackbar.make(this, msg, Snackbar.LENGTH_LONG)
 fun View.longSnackbar(msg: Int) = Snackbar.make(this, msg, Snackbar.LENGTH_LONG)
+fun View.indefiniteSnackbar(msg: String) = Snackbar.make(this, msg, Snackbar.LENGTH_INDEFINITE)
+fun View.indefiniteSnackbar(msg: Int) = Snackbar.make(this, msg, Snackbar.LENGTH_INDEFINITE)
 
 
 

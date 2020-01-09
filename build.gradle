@@ -14,7 +14,7 @@ ext {
     roomVersion = '2.2.1'
     workVersion = '2.2.0'
     materialDialogsVersion = '3.1.1'
-    epoxyVersion = '3.8.0'
+    epoxyVersion = '3.9.0'
 }
 buildscript {
     ext.kotlin_version = '1.3.61'
