@@ -1,26 +1,69 @@
 package com.eagskunst.libraries.movieapp.ui.movie_detail
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import com.eagskunst.libraries.movieapp.R
+import com.eagskunst.libraries.movieapp.app.MoviesApp
+import com.eagskunst.libraries.movieapp.app.app_di.MovieAppComponent
+import com.eagskunst.libraries.movieapp.app.di.ViewModelFactory
 import com.eagskunst.libraries.movieapp.app.models.Movie
 import com.eagskunst.libraries.movieapp.databinding.ActivityMovieDetailBinding
-import com.eagskunst.libraries.movieapp.utils.ModelsFactory
+import com.eagskunst.libraries.movieapp.ui.movie_detail.di.DaggerMovieDetailComponent
+import com.eagskunst.libraries.movieapp.ui.movie_detail.mvvm.MovieDetailViewModel
+import com.eagskunst.libraries.movieapp.utils.Constants
+import com.eagskunst.libraries.movieapp.utils.base.BaseActivity
+import com.kinesis.kinesisapp.utils.base.ScreenState
+import javax.inject.Inject
 
-class MovieDetailActivity : AppCompatActivity(), MovieDetailCallback {
+class MovieDetailActivity : BaseActivity(), MovieDetailCallback {
 
     lateinit var binding: ActivityMovieDetailBinding
+    @Inject lateinit var viewModelFactory: ViewModelFactory
+    private val viewModel by viewModels<MovieDetailViewModel> { viewModelFactory }
+
+    override fun initComponent(appComponent: MovieAppComponent) {
+        DaggerMovieDetailComponent.builder()
+            .movieAppComponent(appComponent)
+            .build()
+            .inject(this)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        initComponent(MoviesApp.appInstance.appComponent)
         binding = DataBindingUtil.setContentView(this,
             R.layout.activity_movie_detail)
         val controller = MovieDetailController(this)
         binding.controller = controller
+        binding.viewModel = viewModel
+    }
 
-        controller.setData(ModelsFactory.createFakeMovie())
+    override fun onStart() {
+        super.onStart()
+
+        viewModel.mutableScreenState.observe(this, Observer {
+            if(it != null && it == ScreenState.ERROR){
+                showSnackErrorWithAction(R.string.try_again){
+                    getMovieDetail()
+                }
+            }
+        })
+
+        viewModel.movieLiveData.observe(this, Observer {
+            if(it != null){
+                val controller = MovieDetailController(this)
+                binding.controller = controller
+                controller.setData(it)
+            }
+        })
+    }
+
+    private fun getMovieDetail(){
+        val id = intent.getIntExtra(Constants.MOVIE_ID, 0)
+        viewModel.getMovieAndCast(id)
     }
 
     override fun onBackPressed() {

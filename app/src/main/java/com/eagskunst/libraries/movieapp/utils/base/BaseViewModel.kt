@@ -11,7 +11,7 @@ import com.kinesis.kinesisapp.utils.base.ScreenState
 abstract class BaseViewModel : ViewModel(), RemoteErrorEmitter {
 
     val mutableProgress = MutableLiveData<Int>(View.GONE)
-    val mutableScreenState = MutableLiveData<ScreenState>()
+    val mutableScreenState = MutableLiveData<ScreenState>(ScreenState.RENDER)
     val mutableErrorMessage = MutableLiveData<String>()
     val mutableSuccessMessage = MutableLiveData<String>()
     val mutableErrorType = MutableLiveData<ErrorType>()

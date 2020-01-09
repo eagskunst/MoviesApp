@@ -51,6 +51,7 @@ class MovieListActivity : BaseActivity() {
                 onBackPressed()
             }
             managerType = Grid
+            viewModel = this@MovieListActivity.viewModel
         }
 
         ViewCompat.setTransitionName(movieListBackgroundIv, Constants.TRANSITION_CATEGORY_IMAGE_IV)
@@ -65,16 +66,9 @@ class MovieListActivity : BaseActivity() {
 
     private fun setupObservers() {
         viewModel.mutableScreenState.observe(this, Observer {
-            if(it != null){
-                when(it){
-                    ScreenState.LOADING -> binding.progressView.visibility = View.VISIBLE
-                    ScreenState.ERROR -> {
-                        binding.progressView.visibility = View.GONE
-                        showSnackErrorWithAction(R.string.try_again){
-                            getMovies()
-                        }
-                    }
-                    else -> binding.progressView.visibility = View.GONE
+            if(it != null && it == ScreenState.ERROR){
+                showSnackErrorWithAction(R.string.try_again){
+                    getMovies()
                 }
             }
         })

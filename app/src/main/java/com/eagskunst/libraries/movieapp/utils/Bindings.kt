@@ -11,6 +11,8 @@ import com.eagskunst.libraries.movieapp.app.models.CategoryCard
 import com.eagskunst.libraries.movieapp.utils.enums.Grid
 import com.eagskunst.libraries.movieapp.utils.enums.LayoutManagerTypes
 import com.eagskunst.libraries.movieapp.utils.enums.Linear
+import com.eagskunst.libraries.movieapp.utils.views.MovieProgressView
+import com.kinesis.kinesisapp.utils.base.ScreenState
 import com.skydoves.rainbow.Rainbow
 import com.skydoves.rainbow.RainbowOrientation
 import com.skydoves.rainbow.contextColor
@@ -43,4 +45,10 @@ fun setLayoutManager(epoxyRv: EpoxyRecyclerView, layoutType: LayoutManagerTypes)
         Linear -> {//Default already is Linear}
         }
     }
+}
+
+@BindingAdapter("app:screenStateVisibility")
+fun changeVisibilityWithScreenState(movieProgressView: MovieProgressView, screenState: ScreenState){
+    movieProgressView.visibility = if(screenState == ScreenState.LOADING) View.VISIBLE
+    else View.GONE
 }

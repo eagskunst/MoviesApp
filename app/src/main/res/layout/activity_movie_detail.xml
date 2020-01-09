@@ -6,10 +6,15 @@
     <data>
         
         <import type="com.eagskunst.libraries.movieapp.ui.movie_detail.MovieDetailController"/>
-        
+        <import type="com.eagskunst.libraries.movieapp.ui.movie_detail.mvvm.MovieDetailViewModel"/>
+
         <variable
             name="controller"
             type="MovieDetailController" />
+
+        <variable
+            name="viewModel"
+            type="MovieDetailViewModel" />
 
     </data>
 
@@ -23,6 +28,12 @@
             android:layout_height="match_parent"
             app:attachEpoxyController="@{controller}"
             />
+
+        <com.eagskunst.libraries.movieapp.utils.views.MovieProgressView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            app:screenStateVisibility="@{viewModel.mutableScreenState}"/>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

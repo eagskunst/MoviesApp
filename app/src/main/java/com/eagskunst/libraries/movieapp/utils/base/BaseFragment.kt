@@ -52,6 +52,7 @@ abstract class BaseFragment : Fragment {
         val textView =
             snack?.view?.findViewById(com.google.android.material.R.id.snackbar_text) as TextView //Get reference of snackbar textview
         textView.maxLines = 5
+        snack.show()
     }
 
     fun showSnackError(msg: Int, long: Boolean = false) {
@@ -66,6 +67,7 @@ abstract class BaseFragment : Fragment {
         val textView =
             snack?.view?.findViewById(com.google.android.material.R.id.snackbar_text) as TextView //Get reference of snackbar textview
         textView.maxLines = 5
+        snack.show()
     }
 
     fun showSnackSuccess(msg: String, long: Boolean = false) {
@@ -77,6 +79,7 @@ abstract class BaseFragment : Fragment {
                 R.color.colorSuccess
             )
         )
+        snack?.show()
     }
 
     fun showSnackSuccess(msg: Int, long: Boolean = false) {
@@ -88,6 +91,7 @@ abstract class BaseFragment : Fragment {
                 R.color.colorSuccess
             )
         )
+        snack?.show()
     }
 
     fun showErrorMessage(errorType: ErrorType) {

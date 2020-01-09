@@ -10,6 +10,7 @@
         <import type="androidx.core.content.ContextCompat"/>
         <import type="com.eagskunst.libraries.movieapp.ui.movie_list.MovieListController"/>
         <import type="com.eagskunst.libraries.movieapp.utils.enums.LayoutManagerTypes"/>
+        <import type="com.eagskunst.libraries.movieapp.ui.movie_list.mvvm.MovieListViewModel"/>
 
         <variable
             name="model"
@@ -23,6 +24,9 @@
         <variable
             name="managerType"
             type="LayoutManagerTypes" />
+        <variable
+            name="viewModel"
+            type="MovieListViewModel" />
 
     </data>
 
@@ -135,6 +139,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:visibility="gone"
+            app:screenStateVisibility="@{viewModel.mutableScreenState}"
             />
 
 

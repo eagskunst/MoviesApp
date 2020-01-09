@@ -1,6 +1,5 @@
 package com.eagskunst.libraries.movieapp.utils.base
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
@@ -14,7 +13,6 @@ import com.eagskunst.libraries.movieapp.utils.Utils
 import com.eagskunst.libraries.movieapp.utils.indefiniteSnackbar
 import com.eagskunst.libraries.movieapp.utils.longSnackbar
 import com.eagskunst.libraries.movieapp.utils.snackbar
-import javax.inject.Inject
 
 /**
  * Created by eagskunst in 3/9/2019.
@@ -48,22 +46,30 @@ abstract class BaseActivity: AppCompatActivity {
         val snack = if(!long) mainView.snackbar(msg)
         else mainView.longSnackbar(msg)
         snack.view.setBackgroundColor(ContextCompat.getColor(this, R.color.colorRedError))
+        snack.show()
     }
 
     fun showSnackError(msg : Int, long: Boolean = false){
         val snack = if(!long)mainView.snackbar(msg)
         else mainView.longSnackbar(msg)
         snack.view.setBackgroundColor(ContextCompat.getColor(this, R.color.colorRedError))
+        snack.show()
     }
 
     fun showSnackErrorWithAction(msg: String, action: () -> Unit){
         val snackbar = mainView.indefiniteSnackbar(msg)
         snackbar.setAction(R.string.retry_text){ action() }
+        snackbar.view.setBackgroundColor(ContextCompat.getColor(this, R.color.colorRedError))
+
+        snackbar.show()
     }
 
     fun showSnackErrorWithAction(msg: Int, action: () -> Unit){
         val snackbar = mainView.indefiniteSnackbar(msg)
         snackbar.setAction(R.string.retry_text){ action() }
+        snackbar.view.setBackgroundColor(ContextCompat.getColor(this, R.color.colorRedError))
+
+        snackbar.show()
     }
 
     fun showSnackSuccess(msg : String, long: Boolean = false){
@@ -73,12 +79,14 @@ abstract class BaseActivity: AppCompatActivity {
             snack.view.findViewById(com.google.android.material.R.id.snackbar_text) as TextView //Get reference of snackbar textview
         textView.maxLines = 5
         snack.view.setBackgroundColor(ContextCompat.getColor(this, R.color.colorSuccess))
+        snack.show()
     }
 
     fun showSnackSuccess(msg : Int, long: Boolean = false){
         val snack = if(!long)mainView.snackbar(msg)
         else mainView.longSnackbar(msg)
         snack.view.setBackgroundColor(ContextCompat.getColor(this, R.color.colorSuccess))
+        snack.show()
     }
 
     fun getDefaultNavOptions() = navOptions {
