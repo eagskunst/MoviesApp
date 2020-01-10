@@ -3,10 +3,14 @@ package com.eagskunst.libraries.movieapp.app.network.adapters
 import com.eagskunst.libraries.movieapp.app.models.Actor
 import com.eagskunst.libraries.movieapp.app.models.Movie
 import com.eagskunst.libraries.movieapp.app.models.MovieCard
+import com.eagskunst.libraries.movieapp.app.models.MovieWrapper
 import com.eagskunst.libraries.movieapp.app.network.models.movie_detail.ActorResponse
 import com.eagskunst.libraries.movieapp.app.network.models.movie_detail.MovieDetailResponse
 import com.eagskunst.libraries.movieapp.app.network.models.movie_list.MovieListResponse
 import com.eagskunst.libraries.movieapp.app.network.models.movie_list.MovieShortDetail
+import com.eagskunst.libraries.movieapp.db.entities.ActorEntity
+import com.eagskunst.libraries.movieapp.db.entities.MovieEntity
+import com.eagskunst.libraries.movieapp.db.entities.MovieWithActors
 import com.eagskunst.libraries.movieapp.utils.Utils
 
 /**
@@ -74,5 +78,36 @@ class MovieAdapter {
                 releaseDate = releaseDate
             )
         }
+    }
+
+    private fun actorToActorEntity(actor: Actor) =
+        ActorEntity(id = actor.id, name = actor.name, photoUrl = actor.photoUrl, movieId = actor.movieId)
+
+    private fun actorEntityToActor(actor: ActorEntity) =
+        Actor(id = actor.id, name = actor.name, photoUrl = actor.photoUrl, movieId = actor.movieId)
+
+    private fun movieToMovieEntity(movie: Movie) =
+        with(movie){
+            MovieEntity(id = id, photoUrl = photoUrl, name = name, releaseDate = releaseDate,
+                genres = genres, studio = studio, rating = rating, description = description, isFavorite = isFavorite)
+        }
+
+    private fun movieEntityToMovie(movie: MovieEntity) =
+        with(movie){
+            Movie(id = id, photoUrl = photoUrl, name = name, releaseDate = releaseDate,
+                genres = genres, studio = studio, rating = rating, description = description, isFavorite = isFavorite,
+                actors = null)
+        }
+
+    fun movieToMovieWrapper(movie: Movie): MovieWrapper{
+        val actors = movie.actors?.map { actorToActorEntity(it) } ?: listOf()
+        val movieEntity = movieToMovieEntity(movie)
+        return MovieWrapper(movieEntity, actors)
+    }
+
+    fun movieWithActorsToMovie(movieWithActors: MovieWithActors): Movie {
+        val actors = movieWithActors.actors.map { actorEntityToActor(it) }
+        val movie = movieEntityToMovie(movieWithActors.movie)
+        return movie.copy(actors = actors)
     }
 }

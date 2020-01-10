@@ -1,5 +1,6 @@
 package com.eagskunst.libraries.movieapp.db.daos
 
+import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.eagskunst.libraries.movieapp.db.entities.ActorEntity
 import com.eagskunst.libraries.movieapp.db.entities.MovieEntity
@@ -22,10 +23,7 @@ interface MovieDao {
     @Query("SELECT * FROM movieentity WHERE id LIKE :movieId LIMIT 1")
     suspend fun getSavedMovie(movieId: Int): MovieEntity
 
-    @Query("SELECT * FROM actorentity")
-    suspend fun getActors(): List<ActorEntity>
-
     @Transaction
     @Query("SELECT * FROM movieentity")
-    fun getMoviesWithActors(): List<MovieWithActors>
+    fun getMoviesWithActors(): LiveData<List<MovieWithActors>>
 }

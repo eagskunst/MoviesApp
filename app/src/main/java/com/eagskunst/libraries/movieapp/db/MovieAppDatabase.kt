@@ -2,6 +2,7 @@ package com.eagskunst.libraries.movieapp.db
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
+import com.eagskunst.libraries.movieapp.db.daos.ActorDao
 import com.eagskunst.libraries.movieapp.db.daos.MovieDao
 import com.eagskunst.libraries.movieapp.db.entities.*
 import com.eagskunst.libraries.movieapp.utils.Constants
@@ -12,4 +13,5 @@ import com.eagskunst.libraries.movieapp.utils.Constants
 @Database(entities = [MovieEntity::class, ActorEntity::class], version = Constants.DB_VERSION)
 abstract class MovieAppDatabase: RoomDatabase(){
     abstract fun moviesDao(): MovieDao
+    abstract fun actorsDao(): ActorDao
 }
