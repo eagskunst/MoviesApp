@@ -86,7 +86,7 @@ class MovieAdapter {
     private fun actorEntityToActor(actor: ActorEntity) =
         Actor(id = actor.id, name = actor.name, photoUrl = actor.photoUrl, movieId = actor.movieId)
 
-    private fun movieToMovieEntity(movie: Movie) =
+    fun movieToMovieEntity(movie: Movie) =
         with(movie){
             MovieEntity(id = id, photoUrl = photoUrl, name = name, releaseDate = releaseDate,
                 genres = genres, studio = studio, rating = rating, description = description, isFavorite = isFavorite)

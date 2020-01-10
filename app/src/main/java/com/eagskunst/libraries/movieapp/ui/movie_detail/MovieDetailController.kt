@@ -20,14 +20,19 @@ class MovieDetailController(private val callbackListener: MovieDetailCallback)
         const val MOVIE_MISCELLANEOUS = "MovieMisc"
     }
 
+    private var isFavorite: Boolean = false
+
     override fun buildModels(data: Movie?) {
         data?.let { movie ->
             movieHeader {
                 id(MOVIE_HEADER_ID)
                 movie(movie)
-                isSaved(false)
+                isSaved(movie.isFavorite)
                 backButtonClickListener { _, _, _, _ -> callbackListener.onBackButtonCallback() }
-                likeButtonClickListener { _, _, _, _ -> callbackListener.onFavoriteCallback(movie) }
+                likeButtonClickListener { _, _, _, _ ->
+                    callbackListener.onFavoriteCallback(movie, isFavorite)
+                    isFavorite = !isFavorite
+                }
             }
 
             movieDescription {
@@ -58,5 +63,5 @@ class MovieDetailController(private val callbackListener: MovieDetailCallback)
 
 interface MovieDetailCallback {
     fun onBackButtonCallback()
-    fun onFavoriteCallback(movie: Movie)
+    fun onFavoriteCallback(movie: Movie, isFavorite: Boolean)
 }

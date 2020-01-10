@@ -22,6 +22,7 @@ class MovieDetailActivity : BaseActivity(), MovieDetailCallback {
 
     lateinit var binding: ActivityMovieDetailBinding
     @Inject lateinit var viewModelFactory: ViewModelFactory
+    private val controller: MovieDetailController by lazy { MovieDetailController(this) }
     private val viewModel by viewModels<MovieDetailViewModel> { viewModelFactory }
 
     override fun initComponent(appComponent: MovieAppComponent) {
@@ -37,7 +38,6 @@ class MovieDetailActivity : BaseActivity(), MovieDetailCallback {
         binding = DataBindingUtil.setContentView(this,
             R.layout.activity_movie_detail)
         binding.lifecycleOwner = this
-        val controller = MovieDetailController(this)
         binding.controller = controller
         binding.viewModel = viewModel
     }
@@ -55,10 +55,12 @@ class MovieDetailActivity : BaseActivity(), MovieDetailCallback {
 
         viewModel.movieLiveData.observe(this, Observer {
             if(it != null){
-                val controller = MovieDetailController(this)
-                binding.controller = controller
                 controller.setData(it)
             }
+        })
+
+        viewModel.savedMoviesList.observe(this, Observer {
+            Log.d("MoviesSaved", "Movies saved size =  ${it?.size}")
         })
 
         getMovieDetail()
@@ -76,7 +78,7 @@ class MovieDetailActivity : BaseActivity(), MovieDetailCallback {
 
     override fun onBackButtonCallback() = onBackPressed()
 
-    override fun onFavoriteCallback(movie: Movie) {
-        Log.d("MovieDetailActivity", "Movie: $movie")
+    override fun onFavoriteCallback(movie: Movie, isFavorite: Boolean) {
+        viewModel.updateMovie(movie, isFavorite)
     }
 }

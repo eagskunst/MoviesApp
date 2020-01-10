@@ -4,7 +4,6 @@ import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
-import com.eagskunst.libraries.movieapp.app.models.Actor
 import com.eagskunst.libraries.movieapp.db.entities.ActorEntity
 
 /**
@@ -16,10 +15,10 @@ interface ActorDao {
     suspend fun getActors(): List<ActorEntity>
 
     @Insert
-    suspend fun saveActors(vararg actor: ActorEntity)
+    suspend fun saveActors(actor: List<ActorEntity>)
 
     @Delete
-    suspend fun deleteActor(actor: Actor)
+    suspend fun deleteActor(actor: ActorEntity)
 
     @Query("DELETE FROM actorentity WHERE movie_id LIKE :movieId")
     suspend fun deleteActorsOfMovie(movieId: Int)
