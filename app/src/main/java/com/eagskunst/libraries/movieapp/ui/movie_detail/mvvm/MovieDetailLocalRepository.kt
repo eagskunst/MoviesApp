@@ -5,6 +5,7 @@ import com.eagskunst.libraries.movieapp.app.models.MovieWrapper
 import com.eagskunst.libraries.movieapp.db.entities.MovieEntity
 import com.eagskunst.libraries.movieapp.db.entities.MovieWithActors
 import com.eagskunst.libraries.movieapp.utils.base.BaseLocalRepository
+import java.lang.Exception
 
 class MovieDetailLocalRepository : MovieDetailRepository.LocalRepository, BaseLocalRepository() {
 
@@ -21,4 +22,13 @@ class MovieDetailLocalRepository : MovieDetailRepository.LocalRepository, BaseLo
     }
 
     override fun getSavedMovies(): LiveData<List<MovieWithActors>> = database.moviesDao().getMoviesWithActors()
+
+    override suspend fun getMovie(movieId: Int): MovieEntity? {
+        return try {
+            database.moviesDao().getSavedMovie(movieId)
+        }catch (e: Exception){
+            e.printStackTrace()
+            null
+        }
+    }
 }

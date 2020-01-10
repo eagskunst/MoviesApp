@@ -13,7 +13,10 @@ class MovieDetailRepositoryImpl(private val remoteRepo: MovieDetailRepository.Re
 
     override suspend fun getMovieAndCast(remoteErrorEmitter: RemoteErrorEmitter, movieId: Int): Movie? {
         val response = remoteRepo.getMovieAndCast(remoteErrorEmitter, movieId)
-        return adapter.fromMovieDetailResponseToMovie(response)
+        val movie = adapter.fromMovieDetailResponseToMovie(response)
+        if(movie == null) return movie
+        val movieEntity = localRepo.getMovie(movieId) ?: return movie
+        return movie.copy(isFavorite = movieEntity.isFavorite)
     }
 
     override suspend fun saveMovieToFavorites(movie: Movie) {

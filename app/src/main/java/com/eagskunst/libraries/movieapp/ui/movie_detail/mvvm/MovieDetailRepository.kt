@@ -22,6 +22,7 @@ interface MovieDetailRepository {
     interface LocalRepository {
         suspend fun saveMovieToFavorites(movieWrapper: MovieWrapper)
         suspend fun deleteMovieFromFavorites(movieEntity: MovieEntity)
+        suspend fun getMovie(movieId: Int): MovieEntity?
         fun getSavedMovies(): LiveData<List<MovieWithActors>>
     }
 

@@ -30,12 +30,13 @@ class MovieDetailViewModel @Inject constructor(private val repository: MovieDeta
 
     fun updateMovie(movie: Movie, isFavorite: Boolean){
         viewModelScope.launch {
+            val updatedMovie = movie.copy(isFavorite = !isFavorite)
             if(!isFavorite)
-                repository.saveMovieToFavorites(movie)
+                repository.saveMovieToFavorites(updatedMovie)
             else
-                repository.deleteMovieFromFavorites(movie)
+                repository.deleteMovieFromFavorites(updatedMovie)
 
-            _movieLiveData.postValue(movie.copy(isFavorite = !isFavorite))
+            _movieLiveData.postValue(updatedMovie)
         }
     }
 }
