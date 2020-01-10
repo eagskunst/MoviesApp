@@ -1,15 +1,13 @@
 package com.eagskunst.libraries.movieapp.ui.movie_list
 
-import android.util.Log
 import com.airbnb.epoxy.TypedEpoxyController
 import com.eagskunst.libraries.movieapp.app.models.MovieCard
 import com.eagskunst.libraries.movieapp.movieCard
-import java.lang.RuntimeException
 
 /**
  * Created by eagskunst in 3/12/2019.
  */
-class MovieListController(val onMovieClick:(id: Int) -> Unit)
+class MovieListController(val onMovieClick:(id: MovieCard) -> Unit)
     : TypedEpoxyController<List<MovieCard>>() {
 
     override fun buildModels(data: List<MovieCard>?) {
@@ -18,7 +16,7 @@ class MovieListController(val onMovieClick:(id: Int) -> Unit)
             movieCard {
                 id(it.id)
                 movieCard(it)
-                clickListener { _, _, _, _ -> onMovieClick(it.id) }
+                clickListener { _, _, _, _ -> onMovieClick(it) }
             }
         }
     }

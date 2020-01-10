@@ -63,8 +63,14 @@ class MovieDetailActivity : BaseActivity(), MovieDetailCallback {
     }
 
     private fun getMovieDetail(){
-        val id = intent.getIntExtra(Constants.MOVIE_ID, 0)
-        viewModel.getMovieAndCast(id)
+        val movie = intent.getParcelableExtra<Movie>(Constants.MOVIE_EXTRA)
+        if(movie != null){
+            viewModel.updateMovie(movie)
+        }
+        else{
+            val id = intent.getIntExtra(Constants.MOVIE_ID, 0)
+            viewModel.getMovieAndCast(id)
+        }
     }
 
     override fun onBackPressed() {

@@ -12,6 +12,7 @@ import com.eagskunst.libraries.movieapp.app.MoviesApp
 import com.eagskunst.libraries.movieapp.app.app_di.MovieAppComponent
 import com.eagskunst.libraries.movieapp.app.di.ViewModelFactory
 import com.eagskunst.libraries.movieapp.app.models.CategoryCard
+import com.eagskunst.libraries.movieapp.app.models.MovieCard
 import com.eagskunst.libraries.movieapp.databinding.ActivityMovieListBinding
 import com.eagskunst.libraries.movieapp.ui.movie_detail.MovieDetailActivity
 import com.eagskunst.libraries.movieapp.ui.movie_list.di.DaggerMovieListComponent
@@ -104,9 +105,11 @@ class MovieListActivity : BaseActivity() {
         }
     }
 
-    private fun onMovieCardClick(id: Int){
+    private fun onMovieCardClick(movieCard: MovieCard){
         val intent = Intent(this, MovieDetailActivity::class.java).apply {
-            putExtra(Constants.MOVIE_ID, id)
+            putExtra(Constants.MOVIE_ID, movieCard.id)
+            if(isUserList)
+                putExtra(Constants.MOVIE_EXTRA, movieCard.movie)
         }
         startActivity(intent)
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
