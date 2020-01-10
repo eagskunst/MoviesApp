@@ -33,6 +33,7 @@
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:animateLayoutChanges="true"
         tools:context=".ui.movie_list.MovieListActivity">
 
         <com.google.android.material.appbar.AppBarLayout
@@ -123,12 +124,34 @@
             android:layout_marginTop="-80dp"
             >
 
-            <com.airbnb.epoxy.EpoxyRecyclerView
+            <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                app:attachEpoxyController="@{controller}"
-                app:epoxyLayoutManager="@{managerType}"
-                />
+                >
+
+                <com.airbnb.epoxy.EpoxyRecyclerView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:attachEpoxyController="@{controller}"
+                    app:epoxyLayoutManager="@{managerType}"
+                    />
+
+                <TextView
+                    android:id="@+id/no_movies_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="25dp"
+                    android:layout_marginTop="50dp"
+                    android:text="@string/you_have_not_saved_any_movie_text"
+                    android:textColor="@color/colorRedError"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:textSize="30sp"
+                    android:visibility="gone"
+                    />
+
+            </FrameLayout>
+
 
 
         </androidx.core.widget.NestedScrollView>

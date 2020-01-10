@@ -32,6 +32,7 @@ class MovieListActivity : BaseActivity() {
     private val viewModel by viewModels<MovieListViewModel>{
         viewModelFactory
     }
+    private var isUserList = false
 
     override fun initComponent(appComponent: MovieAppComponent) {
         DaggerMovieListComponent.builder()
@@ -76,17 +77,31 @@ class MovieListActivity : BaseActivity() {
 
         viewModel.movieList.observe(this, Observer {
             if(it != null && it.isNotEmpty()){
+                binding.noMoviesTv.visibility = View.GONE
                 val controller = MovieListController(this::onMovieCardClick)
                 binding.controller = controller
                 controller.setData(it)
+            }
+            if(it != null && it.isEmpty() && isUserList){
+                binding.noMoviesTv.visibility = View.VISIBLE
             }
         })
     }
 
     private fun getMovies(){
         val cardModel: CategoryCard? = intent.getParcelableExtra(Constants.CATEGORY_CARD_ID)
-        val fixedTitle =  cardModel?.title?.toLowerCase(Locale.US)?.replace(" ", "_") ?: "popular"
-        viewModel.getMovieListForCategory(fixedTitle)
+        if(cardModel?.id == 0){
+            isUserList = true
+            viewModel.savedMoviesList.observe(this, Observer {
+                if(it != null){
+                    viewModel.updateMovieList(it)
+                }
+            })
+        }
+        else{
+            val fixedTitle =  cardModel?.title?.toLowerCase(Locale.US)?.replace(" ", "_") ?: "popular"
+            viewModel.getMovieListForCategory(fixedTitle)
+        }
     }
 
     private fun onMovieCardClick(id: Int){

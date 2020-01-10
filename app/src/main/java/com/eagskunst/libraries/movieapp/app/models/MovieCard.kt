@@ -5,4 +5,6 @@ package com.eagskunst.libraries.movieapp.app.models
  */
 
 data class MovieCard(val id: Int,
-                     val imgUrl: String? = null)
+                     val imgUrl: String? = null,
+                     val movie: Movie? = null
+                     )

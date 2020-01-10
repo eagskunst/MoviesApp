@@ -23,6 +23,7 @@ class MovieDetailController(private val callbackListener: MovieDetailCallback)
     private var isFavorite: Boolean = false
 
     override fun buildModels(data: Movie?) {
+        isFavorite = data?.isFavorite ?: false
         data?.let { movie ->
             movieHeader {
                 id(MOVIE_HEADER_ID)

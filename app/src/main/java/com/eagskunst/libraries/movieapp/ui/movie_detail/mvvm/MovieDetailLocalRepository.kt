@@ -1,11 +1,8 @@
 package com.eagskunst.libraries.movieapp.ui.movie_detail.mvvm
 
-import androidx.lifecycle.LiveData
 import com.eagskunst.libraries.movieapp.app.models.MovieWrapper
 import com.eagskunst.libraries.movieapp.db.entities.MovieEntity
-import com.eagskunst.libraries.movieapp.db.entities.MovieWithActors
 import com.eagskunst.libraries.movieapp.utils.base.BaseLocalRepository
-import java.lang.Exception
 
 class MovieDetailLocalRepository : MovieDetailRepository.LocalRepository, BaseLocalRepository() {
 
@@ -17,11 +14,9 @@ class MovieDetailLocalRepository : MovieDetailRepository.LocalRepository, BaseLo
     }
 
     override suspend fun deleteMovieFromFavorites(movieEntity: MovieEntity) {
-        database.moviesDao().removeMovie(movieEntity)
         database.actorsDao().deleteActorsOfMovie(movieEntity.id)
+        database.moviesDao().removeMovie(movieEntity)
     }
-
-    override fun getSavedMovies(): LiveData<List<MovieWithActors>> = database.moviesDao().getMoviesWithActors()
 
     override suspend fun getMovie(movieId: Int): MovieEntity? {
         return try {

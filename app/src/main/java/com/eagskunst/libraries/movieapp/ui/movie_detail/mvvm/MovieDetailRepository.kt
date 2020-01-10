@@ -13,7 +13,6 @@ interface MovieDetailRepository {
     suspend fun getMovieAndCast(remoteErrorEmitter: RemoteErrorEmitter, movieId: Int): Movie?
     suspend fun saveMovieToFavorites(movie: Movie)
     suspend fun deleteMovieFromFavorites(movie: Movie)
-    fun getSavedMovies(): LiveData<List<MovieWithActors>>
 
     interface RemoteRepository {
         suspend fun getMovieAndCast(remoteErrorEmitter: RemoteErrorEmitter, movieId: Int): MovieDetailResponse?
@@ -23,7 +22,6 @@ interface MovieDetailRepository {
         suspend fun saveMovieToFavorites(movieWrapper: MovieWrapper)
         suspend fun deleteMovieFromFavorites(movieEntity: MovieEntity)
         suspend fun getMovie(movieId: Int): MovieEntity?
-        fun getSavedMovies(): LiveData<List<MovieWithActors>>
     }
 
 }

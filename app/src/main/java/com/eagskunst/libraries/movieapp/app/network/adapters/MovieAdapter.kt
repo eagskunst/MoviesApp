@@ -110,4 +110,12 @@ class MovieAdapter {
         val movie = movieEntityToMovie(movieWithActors.movie)
         return movie.copy(actors = actors)
     }
+
+    fun movieWithActorsToMovieCard(movieAndActors: MovieWithActors): MovieCard =
+        MovieCard(
+            id = movieAndActors.movie.id,
+            imgUrl = movieAndActors.movie.photoUrl,
+            movie = movieWithActorsToMovie(movieAndActors)
+        )
+
 }

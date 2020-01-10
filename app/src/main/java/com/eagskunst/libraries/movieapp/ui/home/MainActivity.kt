@@ -50,20 +50,18 @@ class MainActivity : BaseActivity(), HomeItemClickListener {
     }
 
     override fun onItemClicked(view: View, model: CategoryCard) {
-        if(model.id != 0) {
-            val iv = view.findViewById<ImageView>(R.id.categoryIv)
-            val tv = view.findViewById<TextView>(R.id.categoryTv)
-            val pairsList = listOf<Pair<View, String>>(
-                Pair(iv, Constants.TRANSITION_CATEGORY_IMAGE_IV),
-                Pair(tv, Constants.TRANSITION_CATEGORY_NAME_TV)
-            )
+        val iv = view.findViewById<ImageView>(R.id.categoryIv)
+        val tv = view.findViewById<TextView>(R.id.categoryTv)
+        val pairsList = listOf<Pair<View, String>>(
+            Pair(iv, Constants.TRANSITION_CATEGORY_IMAGE_IV),
+            Pair(tv, Constants.TRANSITION_CATEGORY_NAME_TV)
+        )
 
-            val actOptions = ActivityOptionsCompat.makeSceneTransitionAnimation(this, pairsList[0], pairsList[1])
-            val intent = Intent(this, MovieListActivity::class.java).apply {
-                putExtra(Constants.CATEGORY_CARD_ID, model)
-            }
-            startActivity(intent, actOptions.toBundle())
+        val actOptions = ActivityOptionsCompat.makeSceneTransitionAnimation(this, pairsList[0], pairsList[1])
+        val intent = Intent(this, MovieListActivity::class.java).apply {
+            putExtra(Constants.CATEGORY_CARD_ID, model)
         }
+        startActivity(intent, actOptions.toBundle())
     }
 
 }

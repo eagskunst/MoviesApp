@@ -59,10 +59,6 @@ class MovieDetailActivity : BaseActivity(), MovieDetailCallback {
             }
         })
 
-        viewModel.savedMoviesList.observe(this, Observer {
-            Log.d("MoviesSaved", "Movies saved size =  ${it?.size}")
-        })
-
         getMovieDetail()
     }
 

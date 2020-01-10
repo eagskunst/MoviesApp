@@ -1,9 +1,7 @@
 package com.eagskunst.libraries.movieapp.ui.movie_detail.mvvm
 
-import androidx.lifecycle.LiveData
 import com.eagskunst.libraries.movieapp.app.models.Movie
 import com.eagskunst.libraries.movieapp.app.network.adapters.MovieAdapter
-import com.eagskunst.libraries.movieapp.db.entities.MovieWithActors
 import com.eagskunst.libraries.movieapp.utils.base.RemoteErrorEmitter
 
 class MovieDetailRepositoryImpl(private val remoteRepo: MovieDetailRepository.RemoteRepository,
@@ -26,6 +24,4 @@ class MovieDetailRepositoryImpl(private val remoteRepo: MovieDetailRepository.Re
     override suspend fun deleteMovieFromFavorites(movie: Movie) {
         localRepo.deleteMovieFromFavorites(adapter.movieToMovieEntity(movie))
     }
-
-    override fun getSavedMovies(): LiveData<List<MovieWithActors>> = localRepo.getSavedMovies()
 }
