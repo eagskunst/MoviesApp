@@ -1,6 +1,7 @@
 package com.eagskunst.libraries.movieapp.app.network.api
 
 import com.eagskunst.libraries.movieapp.app.network.models.movie_detail.MovieDetailResponse
+import com.eagskunst.libraries.movieapp.utils.Constants
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
@@ -11,5 +12,5 @@ import retrofit2.http.Query
 interface MovieDetailApi {
     @GET("movie/{movie_id}")
     suspend fun getMovieAndCredits(@Path("movie_id") id: Int,
-                                   @Query("append_to_response") appendToResponse: String = "credits"): MovieDetailResponse
+                                   @Query(Constants.APPEND_TO_RESPONSE) appendToResponse: String = "credits"): MovieDetailResponse
 }

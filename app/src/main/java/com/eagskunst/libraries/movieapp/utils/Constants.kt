@@ -16,4 +16,7 @@ object Constants {
     const val BASE_IMG_URL = "https://image.tmdb.org/t/p/w500"
     const val APPEND_TO_RESPONSE = "append_to_response"
 
+    const val DB_NAME = "movie_app_db"
+    const val DB_VERSION = 1
+
 }

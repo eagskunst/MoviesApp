@@ -91,22 +91,24 @@ object ModelsFactory {
     }
 
     fun createFakeMovie() : Movie {
+        val id = Random.nextInt()
         return Movie(
-            id = Random.nextInt().toString(),
+            id = id,
             name = "Aquaman",
             rating = 4f,
             studio = "Warner Bros",
             genres = "Action, Adventure, Fantasy",
             releaseDate = "21/06/2018",
-            actors = (0..6).map { createFakeActor(it) },
+            actors = (0..6).map { createFakeActor(it, id) },
             photoUrl = "https://images-na.ssl-images-amazon.com/images/I/A1t7EBA+qvL._RI_.jpg",
             description = "In 1985 Maine, lighthouse keeper Thomas Curry rescues Atlanna, the queen of the underwater nation of Atlantis, during a storm. They eventually fall in love and have a son named Arthur, who is born with the power to communicate with marine lifeforms."
         )
     }
 
-    fun createFakeActor(id: Int): Actor = Actor(
+    fun createFakeActor(id: Int, movieId: Int): Actor = Actor(
         id = id,
         name = "Leonardo DiCaprio",
-        photoUrl = "https://upload.wikimedia.org/wikipedia/commons/4/46/Leonardo_Dicaprio_Cannes_2019.jpg"
+        photoUrl = "https://upload.wikimedia.org/wikipedia/commons/4/46/Leonardo_Dicaprio_Cannes_2019.jpg",
+        movieId = movieId
     )
 }

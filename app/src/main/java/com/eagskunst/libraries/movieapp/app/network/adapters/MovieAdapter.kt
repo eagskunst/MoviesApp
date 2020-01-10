@@ -27,18 +27,19 @@ class MovieAdapter {
     fun fromMovieShortDetailListToMovieCardList(movieListResponse: MovieListResponse?): List<MovieCard>? =
         movieListResponse?.results?.map { fromMovieShortDetailToMovieCard(it) }
 
-    private fun fromActorResponseToActor(actorResponse: ActorResponse): Actor {
+    private fun fromActorResponseToActor(actorResponse: ActorResponse, movieId: Int): Actor {
         return with(actorResponse){
             Actor(
                 id = id,
                 name = name,
-                photoUrl = Utils.buildImageString(profilePath ?: "")
+                photoUrl = Utils.buildImageString(profilePath ?: ""),
+                movieId = movieId
             )
         }
     }
 
-    fun fromActorResponseListToActorList(list: List<ActorResponse>?): List<Actor>? =
-        list?.map { fromActorResponseToActor(it) }
+    fun fromActorResponseListToActorList(list: List<ActorResponse>?, movieId: Int): List<Actor>? =
+        list?.map { fromActorResponseToActor(it, movieId) }
 
     private fun getGenresFromMovieDetailResponse(movieDetailResponse: MovieDetailResponse?): String? {
         val builder = StringBuilder()
@@ -56,13 +57,13 @@ class MovieAdapter {
 
     fun fromMovieDetailResponseToMovie(movieDetailResponse: MovieDetailResponse?): Movie? {
         if(movieDetailResponse == null) return null
-        val actors = fromActorResponseListToActorList(movieDetailResponse.credits?.cast)
+        val actors = fromActorResponseListToActorList(movieDetailResponse.credits?.cast, movieDetailResponse.id)
         val studio = getStudioFromMovieDetailResponse(movieDetailResponse)
         val genres = getGenresFromMovieDetailResponse(movieDetailResponse)
 
         return with(movieDetailResponse){
             Movie(
-                id = id.toString(),
+                id = id,
                 photoUrl = Utils.buildImageString(posterPath ?: ""),
                 name = originalTitle,
                 description = overview,

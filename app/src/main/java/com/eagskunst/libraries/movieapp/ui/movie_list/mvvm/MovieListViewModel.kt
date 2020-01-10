@@ -16,6 +16,7 @@ class MovieListViewModel @Inject constructor(private val movieListRepo: MovieLis
 
 
     fun getMovieListForCategory(category: String, page: Int = 1){
+        if(_movieList.value != null && _movieList.value!!.isNotEmpty()) return
         viewModelScope.launch {
             mutableScreenState.postValue(ScreenState.LOADING)
             val list = movieListRepo.getMovieListForCategory(this@MovieListViewModel,

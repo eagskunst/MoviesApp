@@ -15,6 +15,8 @@ class MovieDetailViewModel @Inject constructor(private val repository: MovieDeta
     val movieLiveData = _movieLiveData as LiveData<Movie>
 
     fun getMovieAndCast(movieId: Int){
+        val movie = _movieLiveData.value
+        if(movie != null) return
         viewModelScope.launch {
             mutableScreenState.postValue(ScreenState.LOADING)
             val movie = repository.getMovieAndCast(this@MovieDetailViewModel, movieId)
