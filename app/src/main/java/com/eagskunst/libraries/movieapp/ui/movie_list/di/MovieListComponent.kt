@@ -8,7 +8,7 @@ import dagger.Component
  * Created by eagskunst in 8/1/2020.
  */
 @MovieListScope
-@Component(dependencies = [MovieAppComponent::class], modules = [MovieListModule::class])
+@Component(dependencies = [MovieAppComponent::class])
 interface MovieListComponent {
     fun inject(activity: MovieListActivity)
 }

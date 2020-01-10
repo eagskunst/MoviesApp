@@ -10,4 +10,5 @@
     <string name="release">Release</string>
     <string name="retry_text">Retry</string>
     <string name="you_have_not_saved_any_movie_text">You have not saved any movie</string>
+    <string name="movies_text">Movies</string>
 </resources>

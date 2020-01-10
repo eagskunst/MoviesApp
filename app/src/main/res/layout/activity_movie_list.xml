@@ -99,7 +99,7 @@
                             android:id="@+id/movieListTitleTv"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@font/robotomono_medium"
+                            android:fontFamily="@font/productsans_bold"
                             android:gravity="center"
                             android:layout_centerInParent="true"
                             android:text="@{model.title}"

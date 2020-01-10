@@ -33,9 +33,9 @@
             android:layout_gravity="center"
             android:maxWidth="50dp"
             android:gravity="center"
-            android:fontFamily="@font/robotomono_regular"
+            android:fontFamily="@font/productsans_regular"
             android:textSize="13sp"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             tools:text="Jason Momoa"
             android:text="@{actor.name}"
             android:ellipsize="marquee" />

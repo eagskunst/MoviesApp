@@ -29,7 +29,7 @@ import javax.inject.Inject
 class MovieListActivity : BaseActivity() {
 
     private lateinit var binding: ActivityMovieListBinding
-    @Inject lateinit var viewModelFactory: ViewModelFactory
+    @Inject lateinit var viewModelFactory: ViewModelFactory<MovieListViewModel>
     private val viewModel by viewModels<MovieListViewModel>{
         viewModelFactory
     }

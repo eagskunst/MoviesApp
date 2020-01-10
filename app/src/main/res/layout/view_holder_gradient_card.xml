@@ -52,7 +52,7 @@
                 android:transitionName="@string/categoryTitle"
                 android:text="@{model.title}"
                 android:textColor="@color/white"
-                android:fontFamily="@font/robotomono_medium"
+                android:fontFamily="@font/productsans_bold"
                 android:textAllCaps="true" />
 
         </FrameLayout>

@@ -21,7 +21,7 @@ import javax.inject.Inject
 class MovieDetailActivity : BaseActivity(), MovieDetailCallback {
 
     lateinit var binding: ActivityMovieDetailBinding
-    @Inject lateinit var viewModelFactory: ViewModelFactory
+    @Inject lateinit var viewModelFactory: ViewModelFactory<MovieDetailViewModel>
     private val controller: MovieDetailController by lazy { MovieDetailController(this) }
     private val viewModel by viewModels<MovieDetailViewModel> { viewModelFactory }
 
