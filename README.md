@@ -28,4 +28,4 @@ I made this app for pratice/profesional porpouses, so I won't be accepting pull 
 * MVVM architecture + Repository pattern
 
 ### Check the app!
-You could download the .apk file from the release
+You could download the .apk file from the release tab.
