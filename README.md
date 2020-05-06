@@ -4,7 +4,7 @@ An application that show a list of categories, a list of movies,the details of t
 The app follows the MVVM architecture with the repository pattern, alongside Dagger for DI.
 
 ### Compiling
-After cloning and opening the project, you would need to create the `ApiKeys.kt` file under the `utils` folder, and add your proper API key from the [movie DB API](developers.themoviedb.org]). After that, you can run the project.
+After cloning and opening the project, you would need to create the `ApiKeys.kt` file under the `utils` folder, and add your proper API key from the [movie DB API](https://developers.themoviedb.org). After that, you can run the project.
 
 ### Modifying
 #### Folder structure
